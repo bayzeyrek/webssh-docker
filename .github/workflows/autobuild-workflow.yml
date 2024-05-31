@@ -18,7 +18,7 @@ jobs:
         with:
           version: latest
       - name: Login to Docker
-        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+        run: echo | set /p="{{ secrets.DOCKERHUB_TOKEN }}" | docker login --username foo --password-stdin
       - name: Build the image
         run: |
           docker buildx build --push \
